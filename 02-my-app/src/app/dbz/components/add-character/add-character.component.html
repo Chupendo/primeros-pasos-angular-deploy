@@ -1,0 +1,21 @@
+<h3>Form </h3>
+<div class="row">
+    <form (submit)="emitCharacter()">
+        <div>
+            <!-- uso de ngModel, requiere que se inialize el objeto, añadir la propiedad "name" al input, importar el modulo FormsModule de @angular/forms-->
+            <input type="text" class="form-control mb-2" placeholder="Nombre" name="name" [(ngModel)]='dataForm.name' value="{{dataForm.name}}">
+            <br>
+            <input type="number" class="form-control mb-2"placeholder="Poder" name="power" [(ngModel)]='dataForm.power' value="{{dataForm.power}}">
+            <br>
+            <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+    </form>    
+</div>
+<br>
+<hr>
+<div class="row" *ngIf="dataForm">
+  
+    <h3> Data insert </h3>
+    <p>{{dataForm | json}} </p>
+</div>
+

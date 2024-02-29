@@ -1,0 +1,15 @@
+<h1>DBZ Personajes</h1>
+
+<div class="row">
+    <div class="col-6">
+        <!--<app-dbz-list [person]="personData" (position)="recevidPosition($event)" (idCharacter)="recevidIdPerson($event)"></app-dbz-list>-->
+        <app-dbz-list [person]="character" (position)="recevidPosition($event)" (idCharacter)="recevidIdPerson($event)"></app-dbz-list>
+
+    </div>
+    <div class="col-6">
+        <app-dbz-add-character (characterEmiter)="addPerson($event)"></app-dbz-add-character>
+    </div>
+</div>
+
+
+

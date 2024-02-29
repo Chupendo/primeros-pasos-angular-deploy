@@ -1,0 +1,39 @@
+<h3>List Person</h3>
+
+<ul class="list-group">
+    <!-- https://angular.io/api/common/NgForOfContext -->
+    <!-- multple formas de obtner las propieades de for -->
+    <!-- alternativa a [ngClass=""] con css >>> class = "list-group-item {{ i==0?'list-group-item-primary':''}}" -->
+    <!-- aplicar siempe el esitlo de clase usando ng:
+        Opcion 1.(CSS + NGCLass) poner class ="name-class"  y luego [ngClass] = {"name-class-condition1":condition1, ... }
+        Opcion 2. (Solo NGClass) poner [ngClass] = {"name-class":true,name-class-condition1":condition1, ... } -->
+    <li *ngFor="let per of character;
+        let i = index ;
+        first as isFirst;
+        let isLast = last;
+        even as isEven;
+        let isOdd = odd"
+    class = "list-group-item align-items-center d-flex justify-content-between"
+    [ngClass]="{
+        'list-group-item-primary':isEven,
+        'list-group-item-dark':isLast}">
+
+          <div>
+            <span class="text-primary">{{i + 1}}</span> {{per.name}} - <b>Power:</b> {{per.power}}
+          </div>
+          <button class="btn btn-danger" *ngIf="!per.id" (click)="onDeleteCharacter(i)">X</button>
+          <!--<button class="btn btn-warning" *ngIf="per.id" (click)="onDeleteCharacterById(per.id || '')">X</button>-->
+          <button class="btn btn-warning" *ngIf="per.id" (click)="onDeleteCharacterById(per.id)">X</button>
+    </li>
+</ul>
+
+<!-- Notas:
+  * FOR: *ngFor="let item of Items;let nameVar = ngForProperty; ngForProperty as nameVar"
+  * FOR: *ngFor="let item of Items;ngForProperty as nameVar"
+  * FOR: *ngFor="let item of Items"
+ *
+  * [ngClass]="{class_css:condicion}"
+  * La clase de bostraap: "justify-content-between", lo que hace es justificar el contendio y el espacio que sobra, lo
+  * pone en medio
+  *
+-->
